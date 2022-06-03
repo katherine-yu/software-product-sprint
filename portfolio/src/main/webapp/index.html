@@ -2,18 +2,65 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Katherine Yu</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
     <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click <a href="/hello">here</a> to see content created by server code.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+      <h1 style="text-align:center">Katherine Yu</h1>
+      <div style="text-align:center">
+        <a href="https://www.linkedin.com/in/katherine-y-yu/" target="_blank"><img src="https://static-exp1.licdn.com/sc/h/akt4ae504epesldzj74dzred8" alt="LinkedIn" style="width:30px;vertical-align:middle;margin:0px 10px"></a>
+        <a href="https://github.com/katherine-yu" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub" style="width:30px;vertical-align:middle;margin:0px 10px"></a>
+      </div>
+
+      <h2>About</h2>
+      <p>I am a Computer Science major at Stanford University, and I grew up in Winchester, MA, which is not far from Boston. I love to play the violin and study math&mdash;currently, I am quite enjoying courses in real analysis.</p>
+      
+      <p>Click here for a random fact about me: &nbsp; &nbsp;<button style="height:50px;width:50px;background-color:black;color:white" onclick="addRandomGreeting()">?</button></p>
+      <div id="random-fact-container"></div>
+      <br>
+
+      <h2>Gallery</h2>
+      <div class="container">
+        <button style="margin:20px" onclick="previousImg()"><</button>
+        <img src="images/ico1.jpg" alt="origami isocahedron" width="250" data-idx="0" id="galleryimg">
+        <button style="margin:20px" onclick="nextImg()">></button>
+      </div>
+      <br>
+
+      <h2>Math</h2>
+      <div>
+          <p>I did competitive math throughout middle school and high school, and I'm grateful for having gotten to think about so many interesting problems!</p>
+          <p>My favorite category of math is geometry, and my favorite fact in geometry is the existence of the nine-point circle (see here for a description: <a href="https://en.wikipedia.org/wiki/Nine-point_circle">Nine-point circle</a>).</p>
+          <p style="text-align:center;"><img src="images/nine-point-circle.png" alt="nine-point-circle" width="300"></p>
+          
+          <div style="text-align: center; margin-top: 40px;">
+            <p>Fractals are cool to look at!</p>
+            <button id="mandelbrot" onclick="selectMandelbrot()">Mandelbrot set</button>
+            <button id="sierpinski" onclick="selectSierpinski()">Sierpinski gasket</button>
+            <button id="koch" onclick="selectKoch()">Koch snowflake</button><br>
+            <img src="" alt="" width="250" id="fractal" style="visibility: hidden; margin-top: 25px">
+          </div>
+      </div>
+      <br>
+
+      <h2>Violin</h2>
+      <div>
+          <p>I have been playing the violin for about 14 years, and it brings me great satisfaction to express different emotions through music. Also, I find practicing to be a meditative experience. My favorite composer for the violin is Wieniawski. Some of my other favorite composers are Tchaikovsky, Sarasate, Shostakovich, and Beethoven.</p>
+          <div style="text-align:center;">
+            <h4>Sarasate - Carmen Fantasy</h4>
+            <iframe width="280" height="157" src="https://www.youtube.com/embed/h4DfvGNKuJQ" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p>On the subject of music, a current artist whose music I enjoy is Mili, and I also like to listen to kpop (my favorite group is Tomorrow by Together).</p>
+          <div style="text-align:center;">
+            <h4>Mili - Camelia (violin cover)</h4>
+            <iframe width="280" height="157" src="https://www.youtube.com/embed/pMvMs_tn4as" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+      </div>
+      <br>
+
+      <br><br><br>
     </div>
   </body>
 </html>
