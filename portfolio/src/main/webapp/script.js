@@ -42,57 +42,29 @@ function nextImg() {
     const images = ["images/ico1.jpg", "images/ico2.jpg", "images/fountain.jpg", "images/palm-tree.jpg", "images/ice-cream.jpeg", "images/sunset.jpg"];
 
     idx = parseInt(document.querySelector('#galleryimg').dataset.idx);
-    console.log(idx + 1)
     next_idx = (idx + 1) % images.length;
     document.querySelector('#galleryimg').src = images[next_idx];
     document.querySelector('#galleryimg').dataset.idx = next_idx;
 }
 
-/* Shows or hides the Mandelbrot fractal. */
-function selectMandelbrot() {
-    if (document.querySelector('#fractal').src != "https://upload.wikimedia.org/wikipedia/commons/a/a4/Mandelbrot_sequence_new.gif")
+/* Shows or hides the selected fractal. */
+function selectFractal(idx) {
+    const fractals = ["https://upload.wikimedia.org/wikipedia/commons/a/a4/Mandelbrot_sequence_new.gif",
+                      "https://upload.wikimedia.org/wikipedia/commons/a/a9/Fractal_tree.gif",
+                      "https://upload.wikimedia.org/wikipedia/commons/f/fd/Von_Koch_curve.gif"]
+
+    const alts = ["Mandelbrot set", "Sierpinski gasket", "Koch snowflake"]
+
+    if (document.querySelector('#fractal').src != fractals[idx])
     {
-        document.querySelector('#fractal').src = "https://upload.wikimedia.org/wikipedia/commons/a/a4/Mandelbrot_sequence_new.gif";
-        document.querySelector('#fractal').alt = "Mandelbrot set";
+        document.querySelector('#fractal').src = fractals[idx]
+        document.querySelector('#fractal').alt = alts[idx]
         document.querySelector('#fractal').style.visibility = "visible";
     }
     else
     {
-        hideFractal();
+        document.querySelector('#fractal').style.visibility = "hidden";
+        document.querySelector('#fractal').src = "";
+        document.querySelector('#fractal').alt = "";
     }
-}
-
-/* Shows or hides the Sierpinski fractal. */
-function selectSierpinski() {
-    if (document.querySelector('#fractal').src != "https://upload.wikimedia.org/wikipedia/commons/a/a9/Fractal_tree.gif")
-    {
-        document.querySelector('#fractal').src = "https://upload.wikimedia.org/wikipedia/commons/a/a9/Fractal_tree.gif";
-        document.querySelector('#fractal').alt = "Sierpinski gasket";
-        document.querySelector('#fractal').style.visibility = "visible";
-    }
-    else
-    {
-        hideFractal();
-    }
-}
-
-/* Shows or hides the Koch fractal. */
-function selectKoch() {
-    if (document.querySelector('#fractal').src != "https://upload.wikimedia.org/wikipedia/commons/f/fd/Von_Koch_curve.gif")
-    {
-        document.querySelector('#fractal').src = "https://upload.wikimedia.org/wikipedia/commons/f/fd/Von_Koch_curve.gif";
-        document.querySelector('#fractal').alt = "Koch snowflake";
-        document.querySelector('#fractal').style.visibility = "visible";
-    }
-    else
-    {
-        hideFractal();
-    }
-}
-
-/* Hides the fractal. */
-function hideFractal() {
-    document.querySelector('#fractal').style.visibility = "hidden";
-    document.querySelector('#fractal').src = "";
-    document.querySelector('#fractal').alt = "";
 }
