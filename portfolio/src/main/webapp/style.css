@@ -19,3 +19,9 @@ body
   align-items: center;
   justify-content: center;
 }
+
+.sociallink {
+  width: 30px;
+  vertical-align: middle;
+  margin: 10px;
+}
