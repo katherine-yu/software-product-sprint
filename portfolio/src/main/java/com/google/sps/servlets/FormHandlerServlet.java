@@ -18,9 +18,9 @@ public class FormHandlerServlet extends HttpServlet {
     String messageValue = request.getParameter("message-input");
 
     // Print the value so you can see it in the server logs.
-    System.out.println("Name: " + nameValue + "\nEmail: " + emailValue + "\nMessage: " + messageValue);
+    System.out.println("contact_name: " + nameValue + "\ncontact_email: " + emailValue + "\ncontact_message: " + messageValue);
 
     // Reload the page.
-    response.sendRedirect("/");
+    response.sendRedirect("/#contact");
   }
 }

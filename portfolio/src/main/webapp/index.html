@@ -7,45 +7,58 @@
     <script src="script.js"></script>
   </head>
   <body>
-    <div id="content">
-      <h1 style="text-align:center">Katherine Yu</h1>
-      <div style="text-align:center">
-        <a href="https://www.linkedin.com/in/katherine-y-yu/" target="_blank"><img src="https://static-exp1.licdn.com/sc/h/akt4ae504epesldzj74dzred8" alt="LinkedIn" class="sociallink"></a>
-        <a href="https://github.com/katherine-yu" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub" class="sociallink"></a>
+      <div id="content">
+        <h1 style="text-align:center">Katherine Yu</h1>
+        <div style="text-align:center">
+          <a href="https://www.linkedin.com/in/katherine-y-yu/" target="_blank"><img src="https://static-exp1.licdn.com/sc/h/akt4ae504epesldzj74dzred8" alt="LinkedIn" class="sociallink"></a>
+          <a href="https://github.com/katherine-yu" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub" class="sociallink"></a>
+      </div>
+      <br>
+
+      <div style="text-align:center;">
+        <a href="/#about">About</a>
+        &nbsp;
+        <a href="/#gallery">Gallery</a>
+        &nbsp;
+        <a href="/#math">Math</a>
+        &nbsp;
+        <a href="/#violin">Violin</a>
+        &nbsp;
+        <a href="/#contact">Contact</a>
       </div>
 
-      <h2>About</h2>
+      <h2 id="about">About</h2>
       <p>I am a Computer Science major at Stanford University, and I grew up in Winchester, MA, which is not far from Boston. I love to play the violin and study math&mdash;currently, I am quite enjoying courses in real analysis.</p>
       
       <p>Click here for a random fact about me: &nbsp; &nbsp;<button style="height:50px;width:50px;background-color:black;color:white" onclick="addRandomGreeting()">?</button></p>
       <div id="random-fact-container"></div>
       <br>
 
-      <h2>Gallery</h2>
+      <h2 id="gallery">Gallery</h2>
       <div class="container">
-        <button style="margin:20px" onclick="previousImg()"><</button>
-        <img src="images/ico1.jpg" alt="origami isocahedron" width="250" data-idx="0" id="galleryimg">
-        <button style="margin:20px" onclick="nextImg()">></button>
+        <button style="margin:20px" id="prev-img"><</button>
+        <img src="images/ico1.jpg" alt="origami icosahedron" width="250" id="galleryimg">
+        <button style="margin:20px" id="next-img">></button>
       </div>
       <br>
 
-      <h2>Math</h2>
+      <h2 id="math">Math</h2>
       <div>
           <p>I did competitive math throughout middle school and high school, and I'm grateful for having gotten to think about so many interesting problems!</p>
-          <p>My favorite category of math is geometry, and my favorite fact in geometry is the existence of the nine-point circle (see here for a description: <a href="https://en.wikipedia.org/wiki/Nine-point_circle">Nine-point circle</a>).</p>
+          <p>My favorite category of math is geometry, and my favorite fact in geometry is the existence of the nine-point circle (see here for a description: <a href="https://en.wikipedia.org/wiki/Nine-point_circle" target="_blank">Nine-point circle</a>).</p>
           <p style="text-align:center;"><img src="images/nine-point-circle.png" alt="nine-point-circle" width="300"></p>
           
           <div style="text-align: center; margin-top: 40px;">
             <p>Fractals are cool to look at!</p>
-            <button id="mandelbrot" onclick="selectFractal(0)">Mandelbrot set</button>
-            <button id="sierpinski" onclick="selectFractal(1)">Sierpinski gasket</button>
-            <button id="koch" onclick="selectFractal(2)">Koch snowflake</button><br>
+            <button id="mandelbrot">Mandelbrot set</button>
+            <button id="sierpinski"">Sierpinski gasket</button>
+            <button id="koch">Koch snowflake</button><br>
             <img src="" alt="" width="250" id="fractal" style="visibility: hidden; margin-top: 25px">
           </div>
       </div>
       <br>
 
-      <h2>Violin</h2>
+      <h2 id="violin">Violin</h2>
       <div>
           <p>I have been playing the violin for about 14 years, and it brings me great satisfaction to express different emotions through music. Also, I find practicing to be a meditative experience. My favorite composer for the violin is Wieniawski. Some of my other favorite composers are Tchaikovsky, Sarasate, Shostakovich, and Beethoven.</p>
           <div style="text-align:center;">
@@ -58,13 +71,18 @@
             <iframe width="280" height="157" src="https://www.youtube.com/embed/pMvMs_tn4as" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
       </div>
-      <br>
+      <br><br><br>
 
-      <form action="/form-handler" method="POST">
-        <h2>Contact me</h2>
-        <p class="contactfield">Name &nbsp; &nbsp; <br><textarea name="name-input"></textarea></p>
-        <p class="contactfield">Email &nbsp; &nbsp; <br><textarea name="email-input"></textarea></p>
-        <p class="contactfield">Message &nbsp; &nbsp; <br><textarea name="message-input"></textarea></p>
+      <form style="width:50%; margin:auto" autocomplete="off" action="/form-handler" method="POST" id="contact">
+        <h2 style="text-align:center;">Contact</h2>
+        <table style="width:100%;  margin-top:-25px; margin-bottom:-25px;" >
+          <tr>
+            <td><p class="contactfield">Name &nbsp; &nbsp; <br> <input type="text" style="width:100%; height:30px;" required minlength="1" name="name-input"></input></p></td>
+            <td>&nbsp; &nbsp;</td>
+            <td><p class="contactfield">Email &nbsp; &nbsp; <br> <input required type="email" style="width:100%; height:30px;" name="email-input"></input></p></td>
+          </tr>
+        </table>
+        <p class="contactfield">Message &nbsp; &nbsp; <br><textarea type="text" style="width:100%; height:60px;" required minlength="1" name="message-input"></textarea></p>
         <input type="submit" />
       </form>
       <br>

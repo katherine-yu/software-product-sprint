@@ -13,11 +13,61 @@
 // limitations under the License.
 
 /**
+ * Global variables.
+ * Idea from: https://stackoverflow.com/a/2613534
+ */
+globals = {
+    images: [
+      "images/ico1.jpg",
+      "images/ico2.jpg",
+      "images/fountain.jpg",
+      "images/palm-tree.jpg",
+      "images/ice-cream.jpeg",
+      "images/sunset.jpg"
+    ],
+
+    images_alts: [
+      "origami icosahedron",
+      "origami icosahedron",
+      "fountain",
+      "palm tree",
+      "ice cream",
+      "sunset"
+    ],
+
+    gallery_idx: 0,
+
+    fractals: [
+      "https://upload.wikimedia.org/wikipedia/commons/a/a4/Mandelbrot_sequence_new.gif",
+      "https://upload.wikimedia.org/wikipedia/commons/a/a9/Fractal_tree.gif",
+      "https://upload.wikimedia.org/wikipedia/commons/f/fd/Von_Koch_curve.gif"
+    ],
+        
+    fractal_alts: [
+      "Mandelbrot set",
+      "Sierpinski gasket",
+      "Koch snowflake"
+    ]
+}
+
+/**
+ * Add event listeners.
+ * Idea from: https://stackoverflow.com/a/56992424
+ */
+window.addEventListener('DOMContentLoaded', function(){
+  document.getElementById("prev-img").addEventListener("click", function(){ previousImg(); });
+  document.getElementById("next-img").addEventListener("click", function(){ nextImg(); });
+  document.getElementById("mandelbrot").addEventListener("click", function(){ selectFractal(0); });
+  document.getElementById("sierpinski").addEventListener("click", function(){ selectFractal(1); });
+  document.getElementById("koch").addEventListener("click", function(){ selectFractal(2); });
+});
+
+/**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
-  const facts =
-      ["I'm left-handed.", "My right eye has 20/20 vision, while my left eye has 20/100 vision.", "My favorite flavor of ice cream is mint chocolate chip.", "I like to listen to the Beatles.", "My favorite color is purple.", "I want to visit Antarctica someday.", "I like to watch let's play videos of horror games."];
+async function addRandomGreeting() {
+  const responseFromServer = await fetch('/random-facts');
+  const facts = await responseFromServer.json();
 
   // Pick a random greeting.
   const fact = facts[Math.floor(Math.random() * facts.length)];
@@ -27,38 +77,32 @@ function addRandomGreeting() {
   factContainer.innerText = fact;
 }
 
-/* Shows the previous image in the gallery. */
+/**
+ * Shows the previous image in the gallery. 
+ */
 function previousImg() {
-    const images = ["images/ico1.jpg", "images/ico2.jpg", "images/fountain.jpg", "images/palm-tree.jpg", "images/ice-cream.jpeg", "images/sunset.jpg"];
-
-    idx = parseInt(document.querySelector('#galleryimg').dataset.idx);
-    prev_idx = (idx - 1 + images.length) % images.length;
-    document.querySelector('#galleryimg').src = images[prev_idx];
-    document.querySelector('#galleryimg').dataset.idx = prev_idx;
+    globals.gallery_idx = (globals.gallery_idx - 1 + globals.images.length) % globals.images.length;
+    document.querySelector('#galleryimg').src = globals.images[globals.gallery_idx];
+    document.querySelector('#galleryimg').alt = globals.images_alts[globals.gallery_idx];
 }
 
-/* Shows the next image in the gallery. */
+/**
+ * Shows the next image in the gallery.
+ */
 function nextImg() {
-    const images = ["images/ico1.jpg", "images/ico2.jpg", "images/fountain.jpg", "images/palm-tree.jpg", "images/ice-cream.jpeg", "images/sunset.jpg"];
-
-    idx = parseInt(document.querySelector('#galleryimg').dataset.idx);
-    next_idx = (idx + 1) % images.length;
-    document.querySelector('#galleryimg').src = images[next_idx];
-    document.querySelector('#galleryimg').dataset.idx = next_idx;
+    globals.gallery_idx = (globals.gallery_idx + 1) % globals.images.length;
+    document.querySelector('#galleryimg').src = globals.images[globals.gallery_idx];
+    document.querySelector('#galleryimg').alt = globals.images_alts[globals.gallery_idx];
 }
 
-/* Shows or hides the selected fractal. */
+/**
+ * Shows or hides the selected fractal.
+ */
 function selectFractal(idx) {
-    const fractals = ["https://upload.wikimedia.org/wikipedia/commons/a/a4/Mandelbrot_sequence_new.gif",
-                      "https://upload.wikimedia.org/wikipedia/commons/a/a9/Fractal_tree.gif",
-                      "https://upload.wikimedia.org/wikipedia/commons/f/fd/Von_Koch_curve.gif"]
-
-    const alts = ["Mandelbrot set", "Sierpinski gasket", "Koch snowflake"]
-
-    if (document.querySelector('#fractal').src != fractals[idx])
+    if (document.querySelector('#fractal').src != globals.fractals[idx])
     {
-        document.querySelector('#fractal').src = fractals[idx]
-        document.querySelector('#fractal').alt = alts[idx]
+        document.querySelector('#fractal').src = globals.fractals[idx]
+        document.querySelector('#fractal').alt = globals.fractal_alts[idx]
         document.querySelector('#fractal').style.visibility = "visible";
     }
     else
