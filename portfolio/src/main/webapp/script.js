@@ -62,6 +62,12 @@ window.addEventListener('DOMContentLoaded', function(){
   document.getElementById("koch").addEventListener("click", function(){ selectFractal(2); });
 });
 
+/** Functions to execute on load. */
+window.onload = function() {
+  this.createMap();
+  this.googleTranslateElementInit();
+}
+
 /**
  * Adds a random greeting to the page.
  */
@@ -113,6 +119,9 @@ function selectFractal(idx) {
     }
 }
 
+/**
+ * Initializes the map.
+ */
 function createMap() {
     const map = new google.maps.Map(
         document.getElementById('map_'),
@@ -152,4 +161,16 @@ function addLandmark(map, lat, lng, title, description) {
     marker.addListener('click', () => {
         infoWindow.open(map, marker);
     });
+}
+
+/**
+ * Initializes the Google Translate element.
+ * Source: https://www.w3schools.com/howto/howto_google_translate.asp
+ */
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    },
+    'google_translate_element');
 }
