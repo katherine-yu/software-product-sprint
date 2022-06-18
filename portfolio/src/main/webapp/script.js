@@ -128,27 +128,12 @@ function createMap() {
         {center: {lat: 37.42786582988798, lng: -122.17018205695274}, zoom: 15}
     );
   
-    addLandmark(
-        map, 37.423818732889465, -122.16999966670419, 'Braun Music Center',
-        'Braun Music Center, where I have music lessons and practice violin.');
-    addLandmark(
-        map, 37.42536091564845, -122.17497784665066, 'Meier Hall',
-        'Meier Hall, which is where I\'m staying this summer.');
-    addLandmark(
-        map, 37.42889673964776, -122.17127639814106, 'Sloan Hall',
-        'Sloan Hall, which is where the math department is.');
-    addLandmark(
-        map, 37.43017401370724, -122.17335176017816, 'Gates',
-        'The Gates building, which is where the CS department is.');
-    addLandmark(
-        map, 37.43218463852577, -122.16613125345735, 'Bing Concert Hall',
-        'Bing Concert Hall, where you can watch concerts and where the orchestra performs.');
-    addLandmark(
-        map, 37.42792903609415, -122.1743709993509, 'Huang Engineering Center',
-        'Huang Engineering Center, a nice place to work at night.');
-    addLandmark(
-        map, 37.42518555657497, -122.17049788943241, 'The Axe & Palm',
-        'The Axe & Palm (TAP), a place to get food.');
+    fetch('/locations').then(response => response.json()).then((locations) => {
+        locations.forEach((location) => {
+            console.log(location)
+            addLandmark(map, location.position.latitude, location.position.longitude, location.title, location.description)
+        })
+    });
 }
   
 /**
