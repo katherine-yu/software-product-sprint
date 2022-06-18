@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <title>Katherine Yu</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkSfYA8qgVgP2BMobbx6c3x7R8hD9EnWE"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
       <div id="content">
-        <h1 style="text-align:center">Katherine Yu</h1>
+        <h1 translate="no" style="text-align:center">Katherine Yu</h1>
         <div style="text-align:center">
           <a href="https://www.linkedin.com/in/katherine-y-yu/" target="_blank"><img src="https://static-exp1.licdn.com/sc/h/akt4ae504epesldzj74dzred8" alt="LinkedIn" class="sociallink"></a>
           <a href="https://github.com/katherine-yu" target="_blank"><img src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub" class="sociallink"></a>
@@ -24,8 +26,12 @@
         &nbsp;
         <a href="/#violin">Violin</a>
         &nbsp;
+        <a href="/#places">Places</a>
+        &nbsp;
         <a href="/#contact">Contact</a>
       </div>
+
+      <div id="google_translate_element"></div>
 
       <h2 id="about">About</h2>
       <p>I am a Computer Science major at Stanford University, and I grew up in Winchester, MA, which is not far from Boston. I love to play the violin and study math&mdash;currently, I am quite enjoying courses in real analysis.</p>
@@ -71,6 +77,12 @@
             <iframe width="280" height="157" src="https://www.youtube.com/embed/pMvMs_tn4as" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
       </div>
+      <br>
+
+      <h2 id="places">Places</h2>
+      <div class="container">
+        <div id="map_"></div>
+      </div>
       <br><br><br>
 
       <form style="width:50%; margin:auto" autocomplete="off" action="/form-handler" method="POST" id="contact">
@@ -84,8 +96,9 @@
         </table>
         <p class="contactfield">Message &nbsp; &nbsp; <br><textarea type="text" style="width:100%; height:60px;" required minlength="1" name="message-input"></textarea></p>
         <input type="submit" />
+        <br><br>
+        <p>See previous messages <a href="/messages">here</a>.</p>
       </form>
-      <br>
 
       <br><br><br>
     </div>

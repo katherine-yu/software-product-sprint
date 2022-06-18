@@ -62,6 +62,12 @@ window.addEventListener('DOMContentLoaded', function(){
   document.getElementById("koch").addEventListener("click", function(){ selectFractal(2); });
 });
 
+/** Functions to execute on load. */
+window.onload = function() {
+  this.createMap();
+  this.googleTranslateElementInit();
+}
+
 /**
  * Adds a random greeting to the page.
  */
@@ -111,4 +117,44 @@ function selectFractal(idx) {
         document.querySelector('#fractal').src = "";
         document.querySelector('#fractal').alt = "";
     }
+}
+
+/**
+ * Initializes the map.
+ */
+function createMap() {
+    const map = new google.maps.Map(
+        document.getElementById('map_'),
+        {center: {lat: 37.42786582988798, lng: -122.17018205695274}, zoom: 15}
+    );
+  
+    fetch('/locations').then(response => response.json()).then((locations) => {
+        locations.forEach((location) => {
+            addLandmark(map, location.position.latitude, location.position.longitude, location.title, location.description)
+        })
+    });
+}
+  
+/**
+ * Adds a marker that shows an info window when clicked.
+ */
+function addLandmark(map, lat, lng, title, description) {
+    const marker = new google.maps.Marker({position: {lat: lat, lng: lng}, map: map, title: title});
+  
+    const infoWindow = new google.maps.InfoWindow({content: description});
+    marker.addListener('click', () => {
+        infoWindow.open(map, marker);
+    });
+}
+
+/**
+ * Initializes the Google Translate element.
+ * Source: https://www.w3schools.com/howto/howto_google_translate.asp
+ */
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    },
+    'google_translate_element');
 }
