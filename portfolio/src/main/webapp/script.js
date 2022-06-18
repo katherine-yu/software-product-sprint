@@ -130,7 +130,6 @@ function createMap() {
   
     fetch('/locations').then(response => response.json()).then((locations) => {
         locations.forEach((location) => {
-            console.log(location)
             addLandmark(map, location.position.latitude, location.position.longitude, location.title, location.description)
         })
     });
